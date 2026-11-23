@@ -1,0 +1,33 @@
+# Runs the check every morning on GitHub's servers (laptop can be off) and commits the result.
+name: Daily domain check
+
+on:
+  schedule:
+    - cron: "0 0 * * *"     # 00:00 UTC = 08:00 Malaysia time
+  workflow_dispatch:          # "Run workflow" button for manual tests
+
+permissions:
+  contents: write             # needed to commit the results file
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      TZ: Asia/Kuala_Lumpur
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - run: python -m pytest -q
+      - run: python check.py
+      - name: Commit results
+        run: |
+          git config user.name "domain-check-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add results/
+          git commit -m "Daily check $(date +%F)" || echo "Nothing to commit"
+          git push
