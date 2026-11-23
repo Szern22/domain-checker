@@ -1,0 +1,9 @@
+domain,expected_cname
+www.cloudflare.com,
+www.github.com,github.com
+www.wikipedia.org,dyna.wikimedia.org
+www.microsoft.com,new-cdn.example.net
+expired.badssl.com,
+wrong.host.badssl.com,
+self-signed.badssl.com,
+this-domain-does-not-exist-12345.com,
