@@ -1,0 +1,239 @@
+{
+  "run_time": "2026-11-27T15:52:36",
+  "results": [
+    {
+      "domain": "expired.badssl.com",
+      "expected_cname": null,
+      "dns": {
+        "resolves": true,
+        "ips": [
+          "104.154.89.105"
+        ],
+        "cname": null,
+        "chain": [],
+        "error": null
+      },
+      "ssl": {
+        "valid": false,
+        "days_left": -4247,
+        "expires": "2015-04-12",
+        "error": "certificate has expired"
+      },
+      "http": {
+        "status": 200,
+        "error": null
+      },
+      "issues": [
+        {
+          "severity": "CRITICAL",
+          "message": "SSL invalid: certificate has expired (expired 2015-04-12, 4247 days ago)",
+          "new": true
+        }
+      ],
+      "status": "CRITICAL"
+    },
+    {
+      "domain": "self-signed.badssl.com",
+      "expected_cname": null,
+      "dns": {
+        "resolves": true,
+        "ips": [
+          "104.154.89.105"
+        ],
+        "cname": null,
+        "chain": [],
+        "error": null
+      },
+      "ssl": {
+        "valid": false,
+        "days_left": 727,
+        "expires": "2028-11-23",
+        "error": "self-signed certificate (not trusted)"
+      },
+      "http": {
+        "status": 200,
+        "error": null
+      },
+      "issues": [
+        {
+          "severity": "CRITICAL",
+          "message": "SSL invalid: self-signed certificate (not trusted) (expires 2028-11-23)",
+          "new": false
+        }
+      ],
+      "status": "CRITICAL"
+    },
+    {
+      "domain": "this-domain-does-not-exist-12345.com",
+      "expected_cname": null,
+      "dns": {
+        "resolves": false,
+        "ips": [],
+        "cname": null,
+        "chain": [],
+        "error": "domain does not exist (NXDOMAIN)"
+      },
+      "ssl": null,
+      "http": null,
+      "issues": [
+        {
+          "severity": "CRITICAL",
+          "message": "Does not resolve: domain does not exist (NXDOMAIN)",
+          "new": false
+        }
+      ],
+      "status": "CRITICAL"
+    },
+    {
+      "domain": "wrong.host.badssl.com",
+      "expected_cname": null,
+      "dns": {
+        "resolves": true,
+        "ips": [
+          "104.154.89.105"
+        ],
+        "cname": null,
+        "chain": [],
+        "error": null
+      },
+      "ssl": {
+        "valid": false,
+        "days_left": 31,
+        "expires": "2026-12-28",
+        "error": "certificate does not match the domain name"
+      },
+      "http": {
+        "status": null,
+        "error": "no response ([Errno 104] Connection reset by peer)"
+      },
+      "issues": [
+        {
+          "severity": "CRITICAL",
+          "message": "SSL invalid: certificate does not match the domain name (expires 2026-12-28)",
+          "new": false
+        },
+        {
+          "severity": "CRITICAL",
+          "message": "Site not responding: no response ([Errno 104] Connection reset by peer)",
+          "new": true
+        }
+      ],
+      "status": "CRITICAL"
+    },
+    {
+      "domain": "www.microsoft.com",
+      "expected_cname": "new-cdn.example.net",
+      "dns": {
+        "resolves": true,
+        "ips": [
+          "184.30.153.155"
+        ],
+        "cname": "www.microsoft.com-c-3.edgekey.net",
+        "chain": [
+          "www.microsoft.com-c-3.edgekey.net",
+          "e13678.dscb.akamaiedge.net"
+        ],
+        "error": null
+      },
+      "ssl": {
+        "valid": true,
+        "days_left": 51,
+        "expires": "2027-01-17",
+        "error": null
+      },
+      "http": {
+        "status": 200,
+        "error": null
+      },
+      "issues": [
+        {
+          "severity": "WARNING",
+          "message": "CNAME mismatch: expected new-cdn.example.net, actual www.microsoft.com-c-3.edgekey.net",
+          "new": false
+        }
+      ],
+      "status": "WARNING"
+    },
+    {
+      "domain": "www.cloudflare.com",
+      "expected_cname": null,
+      "dns": {
+        "resolves": true,
+        "ips": [
+          "104.16.123.96",
+          "104.16.124.96"
+        ],
+        "cname": null,
+        "chain": [],
+        "error": null
+      },
+      "ssl": {
+        "valid": true,
+        "days_left": 79,
+        "expires": "2027-02-14",
+        "error": null
+      },
+      "http": {
+        "status": 200,
+        "error": null
+      },
+      "issues": [],
+      "status": "OK"
+    },
+    {
+      "domain": "www.github.com",
+      "expected_cname": "github.com",
+      "dns": {
+        "resolves": true,
+        "ips": [
+          "57.166.80.144"
+        ],
+        "cname": "github.com",
+        "chain": [
+          "github.com"
+        ],
+        "error": null
+      },
+      "ssl": {
+        "valid": true,
+        "days_left": 61,
+        "expires": "2027-01-27",
+        "error": null
+      },
+      "http": {
+        "status": 200,
+        "error": null
+      },
+      "issues": [],
+      "status": "OK"
+    },
+    {
+      "domain": "www.wikipedia.org",
+      "expected_cname": "dyna.wikimedia.org",
+      "dns": {
+        "resolves": true,
+        "ips": [
+          "198.35.26.224"
+        ],
+        "cname": "dyna.wikimedia.org",
+        "chain": [
+          "dyna.wikimedia.org"
+        ],
+        "error": null
+      },
+      "ssl": {
+        "valid": true,
+        "days_left": 36,
+        "expires": "2027-01-02",
+        "error": null
+      },
+      "http": {
+        "status": 200,
+        "error": null
+      },
+      "issues": [],
+      "status": "OK"
+    }
+  ],
+  "resolved": []
+}
